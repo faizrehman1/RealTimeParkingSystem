@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "377923428026",
+    "firebase_url": "https://onlineparkingsystem-b0fc5.firebaseio.com",
+    "project_id": "onlineparkingsystem-b0fc5",
+    "storage_bucket": "onlineparkingsystem-b0fc5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:377923428026:android:d5f799e606b9290b",
+        "android_client_info": {
+          "package_name": "com.example.faizrehman.online_parking_system"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "377923428026-lfk030ai0q7jg8t71p2ijqbu38po4r58.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAhSN2H2PXrbidqZNVf2xRzVTutCZHaulc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
