@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.faizrehman.online_parking_system.Models.UserModels;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
@@ -33,6 +34,7 @@ public class signup_fragment extends  android.support.v4.app.Fragment {
     private FirebaseAuth mAuth;
     private FirebaseUser firebase_user;
     private DatabaseReference firebase;
+
 
 
 
@@ -98,6 +100,11 @@ public class signup_fragment extends  android.support.v4.app.Fragment {
 //                                                if (task.isSuccessful()) {
                                         //  firebase.child("User").child(uid).setValue();
                                         progressDialog.dismiss();
+                                        if(getActivity().getSupportFragmentManager().findFragmentById(R.id.container) != null) {
+                                            getActivity().getSupportFragmentManager()
+                                                    .beginTransaction().
+                                                    remove(getActivity().getSupportFragmentManager().findFragmentById(R.id.container)).commit();
+                                        }
                                         Toast.makeText(getActivity(), "Successfull", Toast.LENGTH_SHORT).show();
                                         AppLogs.logd("createUserWithEmail:onComplete: " + task.isSuccessful());
 

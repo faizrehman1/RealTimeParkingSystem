@@ -1,4 +1,4 @@
-package com.example.faizrehman.online_parking_system;
+package com.example.faizrehman.online_parking_system.Models;
 
 /**
  * Created by faizrehman on 1/27/17.

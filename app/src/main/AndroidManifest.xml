@@ -8,18 +8,19 @@
         android:label="Online Parking System"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity"
-            android:windowSoftInputMode="stateAlwaysHidden"
-            >
+        <activity
+            android:name=".MainActivity"
+            android:windowSoftInputMode="stateAlwaysHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AdminActivity"
-            android:windowSoftInputMode="stateAlwaysHidden"
-            ></activity>
+        <activity
+            android:name=".Admin.AdminActivity"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity android:name=".User.UserActivity"></activity>
     </application>
 
 </manifest>

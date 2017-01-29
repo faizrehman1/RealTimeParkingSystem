@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:padding="10dp"
+    android:layout_height="match_parent">
+
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/radioGroup"
+        android:orientation="vertical"
+        android:gravity="left"
+        android:checkedButton="1"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+    <RadioButton
+        android:text="Nazimabad Parking Plaza"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/park_2"
+        android:layout_alignLeft="@+id/park_2"
+        android:layout_alignStart="@+id/park_2"
+        android:id="@+id/park_3" />
+
+    <RadioButton
+        android:text="Saddar Parking Plaza"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/park_2"
+        android:layout_below="@+id/park_1"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <RadioButton
+        android:text="Gulshan Parking Plaza"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/park_1"
+        android:layout_below="@+id/button2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+</RadioGroup>
+
+    <TextView
+        android:text="Select Hours :"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView3"
+        android:layout_alignBaseline="@+id/slect_time"
+        android:layout_alignBottom="@+id/slect_time"
+        android:layout_toLeftOf="@+id/select_hour"
+        android:layout_toStartOf="@+id/select_hour" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/select_hour"
+        android:entries="@array/stimes"
+        android:layout_marginRight="11dp"
+        android:layout_marginEnd="11dp"
+        android:layout_alignBaseline="@+id/textView3"
+        android:layout_alignBottom="@+id/textView3"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_below="@id/radioGroup"
+        android:id="@+id/slot_container"
+        android:visibility="gone"
+        android:layout_height="match_parent">
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:id="@+id/listt" />
+
+
+    </RelativeLayout>
+
+    <TextView
+        android:text="error Msg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/datee"
+        android:visibility="gone"
+        android:layout_alignRight="@+id/slect_time"
+        android:layout_alignEnd="@+id/slect_time"
+        android:id="@+id/error_msg" />
+
+    <TextView
+        android:text="Select Date :"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="34dp"
+        android:id="@+id/select_date"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="30dp"
+        android:layout_marginStart="30dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName|date"
+        android:ems="10"
+        android:padding="10dp"
+        android:textSize="20dp"
+        android:id="@+id/datee"
+        android:hint="MM/dd/yy"
+        android:layout_alignBaseline="@+id/select_date"
+        android:layout_alignBottom="@+id/select_date"
+        android:layout_toRightOf="@+id/select_date"
+        android:layout_toEndOf="@+id/select_date" />
+
+    <Button
+        android:text="Select Slot"
+        android:layout_height="wrap_content"
+        android:id="@+id/s_slot"
+        android:textAllCaps="false"
+        android:layout_width="150dp"
+        android:layout_marginBottom="12dp"
+        android:layout_above="@+id/radioGroup"
+        android:layout_alignLeft="@+id/datee"
+        android:layout_alignStart="@+id/datee" />
+
+    <TextView
+        android:text="Start Time :"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView2"
+        android:layout_above="@+id/s_slot"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="17dp" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/slect_time"
+        android:entries="@array/times"
+        android:layout_alignBaseline="@+id/textView2"
+        android:layout_alignBottom="@+id/textView2"
+        android:layout_toRightOf="@+id/textView2"
+        android:layout_toEndOf="@+id/textView2" />
+</RelativeLayout>
