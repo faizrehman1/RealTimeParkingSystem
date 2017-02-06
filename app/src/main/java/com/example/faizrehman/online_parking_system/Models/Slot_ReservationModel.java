@@ -14,6 +14,7 @@ public class Slot_ReservationModel {
     private int slot_no;
     private boolean isBooked;
     private String custName;
+    private String custID;
 
     public Slot_ReservationModel(int slot_no, boolean isBooked) {
         this.slot_no = slot_no;
@@ -21,7 +22,7 @@ public class Slot_ReservationModel {
 
     }
 
-    public Slot_ReservationModel(String selectdate, int starttime, int selectHour, String currentTime, String plazaName, int slot_no, boolean isBooked, String custName) {
+    public Slot_ReservationModel(String selectdate, int starttime, int selectHour, String currentTime, String plazaName, int slot_no, boolean isBooked, String custName, String custID) {
         this.selectdate = selectdate;
         this.starttime = starttime;
         this.selectHour = selectHour;
@@ -30,12 +31,19 @@ public class Slot_ReservationModel {
         this.slot_no = slot_no;
         this.isBooked = isBooked;
         this.custName = custName;
+        this.custID = custID;
     }
-
 
     public Slot_ReservationModel() {
     }
 
+    public String getCustID() {
+        return custID;
+    }
+
+    public void setCustID(String custID) {
+        this.custID = custID;
+    }
 
     public String getCustName() {
         return custName;

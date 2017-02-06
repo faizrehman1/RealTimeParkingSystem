@@ -98,7 +98,7 @@ public class View_Booking_Admin extends  android.support.v4.app.Fragment{
                     if (dataSnapshot.getValue() != null) {
                         for (DataSnapshot data : dataSnapshot.getChildren()) {
                             Slot_ReservationModel slot_reservationModel = data.getValue(Slot_ReservationModel.class);
-                            slot_reservationModels.add(new Slot_ReservationModel(slot_reservationModel.getSelectdate(), slot_reservationModel.getStarttime(), slot_reservationModel.getSelectHour(), slot_reservationModel.getCurrentTime(), slot_reservationModel.getPlazaName(), slot_reservationModel.getSlot_no(), slot_reservationModel.isBooked(), slot_reservationModel.getCustName()));
+                            slot_reservationModels.add(new Slot_ReservationModel(slot_reservationModel.getSelectdate(), slot_reservationModel.getStarttime(), slot_reservationModel.getSelectHour(), slot_reservationModel.getCurrentTime(), slot_reservationModel.getPlazaName(), slot_reservationModel.getSlot_no(), slot_reservationModel.isBooked(), slot_reservationModel.getCustName(),slot_reservationModel.getCustID()));
                             view_booking_adapter.notifyDataSetChanged();
                         }
                     }
