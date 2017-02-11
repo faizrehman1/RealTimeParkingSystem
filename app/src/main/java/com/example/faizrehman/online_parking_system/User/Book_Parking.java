@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.ListView;
@@ -46,7 +47,7 @@ public class Book_Parking extends android.support.v4.app.Fragment {
 
     private TextView edittext;
     private Calendar myCalendar;
-    private RadioButton park1, park2, park3;
+    private CheckBox park1, park2, park3;
     private ListView listView;
     private RelativeLayout relativeLayout;
     private Slot_Adapter slot_adapter;
@@ -71,11 +72,12 @@ public class Book_Parking extends android.support.v4.app.Fragment {
         myRef = database.getReference();
         mAuth = FirebaseAuth.getInstance();
         edittext = (TextView) view.findViewById(R.id.datee);
-        park1 = (RadioButton) view.findViewById(R.id.park_1);
-        park2 = (RadioButton) view.findViewById(R.id.park_2);
-        park3 = (RadioButton) view.findViewById(R.id.park_3);
+        park1 = (CheckBox) view.findViewById(R.id.park_1);
+        park2 = (CheckBox) view.findViewById(R.id.park_2);
+        park3 = (CheckBox) view.findViewById(R.id.park_3);
         spinnerhours = (Spinner) view.findViewById(R.id.select_hour);
         spinnertime = (Spinner) view.findViewById(R.id.slect_time);
+        btn = (Button)view.findViewById(R.id.s_slot);
         relativeLayout = (RelativeLayout) view.findViewById(R.id.slot_container);
         listView = (ListView) view.findViewById(R.id.listt);
         slot_viewModelArrayList = new ArrayList<>();
@@ -92,13 +94,14 @@ public class Book_Parking extends android.support.v4.app.Fragment {
         final int sizee = Integer.valueOf(size_valuess[spinner_poss]);
 
 
-        park1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        btn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
+            public void onClick(View v) {
+              if(!edittext.getText().toString().matches("")){
+                if (park1.isChecked()) {
                     plazaName = "Gulshan";
                     relativeLayout.setVisibility(View.VISIBLE);
-                    myRef.child("user-booked-slots").child("Gulshan").addValueEventListener(new ValueEventListener() {
+                    myRef.child("user-booked-slots").child("Gulshan").child(edittext.getText().toString()).addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
                             slot_viewModelArrayList.clear();
@@ -117,7 +120,7 @@ public class Book_Parking extends android.support.v4.app.Fragment {
                                     //   }
                                     slot_adapter.notifyDataSetChanged();
                                 }
-                            }else{
+                            } else {
 
                                 slot_viewModelArrayList.add(new Slot_ReservationModel(0, false));
                                 slot_viewModelArrayList.add(new Slot_ReservationModel(1, false));
@@ -136,18 +139,10 @@ public class Book_Parking extends android.support.v4.app.Fragment {
                         }
                     });
 
-                }
-            }
-        });
-
-        park2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
+                } else if (park2.isChecked()) {
                     plazaName = "Saddar";
                     relativeLayout.setVisibility(View.VISIBLE);
-
-                    myRef.child("user-booked-slots").child("Saddar").addValueEventListener(new ValueEventListener() {
+                    myRef.child("user-booked-slots").child("Saddar").child(edittext.getText().toString()).addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
                             slot_viewModelArrayList.clear();
@@ -163,7 +158,7 @@ public class Book_Parking extends android.support.v4.app.Fragment {
                                     slot_adapter.notifyDataSetChanged();
                                 }
 
-                            }else{
+                            } else {
 
                                 slot_viewModelArrayList.add(new Slot_ReservationModel(0, false));
                                 slot_viewModelArrayList.add(new Slot_ReservationModel(1, false));
@@ -171,8 +166,6 @@ public class Book_Parking extends android.support.v4.app.Fragment {
                                 slot_viewModelArrayList.add(new Slot_ReservationModel(3, false));
                                 slot_viewModelArrayList.add(new Slot_ReservationModel(4, false));
                                 slot_adapter.notifyDataSetChanged();
-
-
                             }
                         }
 
@@ -181,18 +174,10 @@ public class Book_Parking extends android.support.v4.app.Fragment {
 
                         }
                     });
-
-                }
-            }
-        });
-
-        park3.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
+                } else if (park3.isChecked()) {
                     plazaName = "Nazimabad";
                     relativeLayout.setVisibility(View.VISIBLE);
-                    myRef.child("user-booked-slots").child("Nazimabad").addValueEventListener(new ValueEventListener() {
+                    myRef.child("user-booked-slots").child("Nazimabad").child(edittext.getText().toString()).addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
                             slot_viewModelArrayList.clear();
@@ -208,7 +193,7 @@ public class Book_Parking extends android.support.v4.app.Fragment {
                                     slot_adapter.notifyDataSetChanged();
                                 }
                                 //  slot_adapter.notifyDataSetChanged();
-                            }else{
+                            } else {
 
                                 slot_viewModelArrayList.add(new Slot_ReservationModel(0, false));
                                 slot_viewModelArrayList.add(new Slot_ReservationModel(1, false));
@@ -227,10 +212,48 @@ public class Book_Parking extends android.support.v4.app.Fragment {
                         }
                     });
 
+                } else {
+                    Toast.makeText(getActivity(), "Select Plaza", Toast.LENGTH_SHORT).show();
                 }
+            }else{
+                  Toast.makeText(getActivity(), "Select date for show Slots.", Toast.LENGTH_SHORT).show();
+
+              }
             }
         });
 
+        park1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    park2.setChecked(false);
+                    park3.setChecked(false);
+                }
+                relativeLayout.setVisibility(View.GONE);
+            }
+        });
+        park2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    park1.setChecked(false);
+                    park3.setChecked(false);
+
+                }
+                relativeLayout.setVisibility(View.GONE);
+            }
+        });
+        park3.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    park1.setChecked(false);
+                    park2.setChecked(false);
+
+                }
+                relativeLayout.setVisibility(View.GONE);
+            }
+        });
 
         myCalendar = Calendar.getInstance();
 
@@ -255,6 +278,8 @@ public class Book_Parking extends android.support.v4.app.Fragment {
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
+
+                relativeLayout.setVisibility(View.GONE);
                 DatePickerDialog datePickerDialog = new DatePickerDialog(getActivity(), date, myCalendar
                         .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
                         myCalendar.get(Calendar.DAY_OF_MONTH));
@@ -278,10 +303,10 @@ public class Book_Parking extends android.support.v4.app.Fragment {
                 builder.setNegativeButton("Booked", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        if (edittext.getText().toString() == null) {
+                        if (edittext.getText().toString() ==null) {
                             Toast.makeText(getActivity(), "Please select Date", Toast.LENGTH_SHORT).show();
-                        } else if (edittext.getText().toString().matches("MM/dd/yy")) {
-
+                        } else if (edittext.getText().toString().matches("")) {
+                            Toast.makeText(getActivity(), "Please select Date", Toast.LENGTH_SHORT).show();
                         } else {
                             myRef.child("user-booked-slots").child(plazaName).child(edittext.getText().toString()).child(String.valueOf(position)).setValue(new Slot_ReservationModel(sdf.format(myCalendar.getTime()).toString(), size, sizee, String.valueOf(System.currentTimeMillis()), plazaName, slot_viewModelArrayList.get(position).getSlot_no(), true, mAuth.getCurrentUser().getEmail().toString(),mAuth.getCurrentUser().getUid()));
                             slot_viewModelArrayList.remove(position);
@@ -302,8 +327,8 @@ public class Book_Parking extends android.support.v4.app.Fragment {
 
     private void updateLabel() {
 
-        String myFormat = "MM/dd/yy"; //In which you need put here
-        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
+     //   String myFormat = "MM/dd/yy"; //In which you need put here
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
 
         edittext.setText(sdf.format(myCalendar.getTime()));
     }
@@ -314,6 +339,5 @@ public class Book_Parking extends android.support.v4.app.Fragment {
         final InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(getView().getWindowToken(), 0);
     }
-
 
 }

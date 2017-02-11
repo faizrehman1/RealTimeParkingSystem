@@ -52,112 +52,112 @@ public class View_Booking  extends  android.support.v4.app.Fragment{
         view_booking_adapter = new View_booking_Adapter(slot_reservationModels,getActivity());
         listView.setAdapter(view_booking_adapter);
 
-
-
-        if(mAuth.getCurrentUser().getUid().toString()!=null) {
-            myRef.child("user-booked-slots").child("Gulshan").addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    if (dataSnapshot.getValue() != null) {
-                        for (DataSnapshot data : dataSnapshot.getChildren()) {
-                            if(data.child("custName").getValue().toString().matches(mAuth.getCurrentUser().getEmail().toString())) {
-                                Slot_ReservationModel slot_reservationModel = data.getValue(Slot_ReservationModel.class);
-                                slot_reservationModels.add(slot_reservationModel);
-                                view_booking_adapter.notifyDataSetChanged();
-                            }
-                        }
-                    }
-                }
-
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-
-                }
-            });
-
-
-            myRef.child("user-booked-slots").child("Saddar").addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    if (dataSnapshot.getValue() != null) {
-                        for (DataSnapshot data : dataSnapshot.getChildren()) {
-                            if(data.child("custName").getValue().toString().matches(mAuth.getCurrentUser().getEmail().toString())) {
-                                Slot_ReservationModel slot_reservationModel = data.getValue(Slot_ReservationModel.class);
-                                slot_reservationModels.add(slot_reservationModel);
-                                view_booking_adapter.notifyDataSetChanged();
-                            }
-                        }
-                    }
-                }
-
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-
-                }
-            });
-
-            myRef.child("user-booked-slots").child("Nazimabad").addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    if (dataSnapshot.getValue() != null) {
-                        for (DataSnapshot data : dataSnapshot.getChildren()) {
-                            if(data.child("custName").getValue().toString().matches(mAuth.getCurrentUser().getEmail().toString())) {
-                                Slot_ReservationModel slot_reservationModel = data.getValue(Slot_ReservationModel.class);
-                                slot_reservationModels.add(slot_reservationModel);
-                                view_booking_adapter.notifyDataSetChanged();
-                            }
-                        }
-                    }
-                }
-
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-
-                }
-            });
-        }
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                builder.setTitle("Remove");
-                builder.setMessage("You want tO Cancle Reservation..?");
-                builder.setPositiveButton("Unbooked", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        myRef.child("user-booked-slots").child(slot_reservationModels.get(position).getPlazaName()).addListenerForSingleValueEvent(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(DataSnapshot dataSnapshot) {
-                                int i = 0;
-                              for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
-                                    if (i == position) {
-                                        DatabaseReference ref = dataSnapshot1.getRef();
-                                        ref.removeValue();
-                                        Toast.makeText(getActivity(), "Reservation Cancled", Toast.LENGTH_SHORT).show();
-                                        slot_reservationModels.remove(position);
-                                        view_booking_adapter.notifyDataSetChanged();
-                                    }
-                                  i++;
-                              }
-
-                            }
-
-                            @Override
-                            public void onCancelled(DatabaseError databaseError) {
-
-                            }
-
-                        });
-                    }
-                });
-                builder.setNegativeButton("Back", null);
-                builder.show();
-
-            }
-
-
-
-        });
+//
+//
+//        if(mAuth.getCurrentUser().getUid().toString()!=null) {
+//            myRef.child("user-booked-slots").child("Gulshan").addValueEventListener(new ValueEventListener() {
+//                @Override
+//                public void onDataChange(DataSnapshot dataSnapshot) {
+//                    if (dataSnapshot.getValue() != null) {
+//                        for (DataSnapshot data : dataSnapshot.getChildren()) {
+//                            if(data.child("custName").getValue().toString().matches(mAuth.getCurrentUser().getEmail().toString())) {
+//                                Slot_ReservationModel slot_reservationModel = data.getValue(Slot_ReservationModel.class);
+//                                slot_reservationModels.add(slot_reservationModel);
+//                                view_booking_adapter.notifyDataSetChanged();
+//                            }
+//                        }
+//                    }
+//                }
+//
+//                @Override
+//                public void onCancelled(DatabaseError databaseError) {
+//
+//                }
+//            });
+//
+//
+//            myRef.child("user-booked-slots").child("Saddar").addValueEventListener(new ValueEventListener() {
+//                @Override
+//                public void onDataChange(DataSnapshot dataSnapshot) {
+//                    if (dataSnapshot.getValue() != null) {
+//                        for (DataSnapshot data : dataSnapshot.getChildren()) {
+//                            if(data.child("custName").getValue().toString().matches(mAuth.getCurrentUser().getEmail().toString())) {
+//                                Slot_ReservationModel slot_reservationModel = data.getValue(Slot_ReservationModel.class);
+//                                slot_reservationModels.add(slot_reservationModel);
+//                                view_booking_adapter.notifyDataSetChanged();
+//                            }
+//                        }
+//                    }
+//                }
+//
+//                @Override
+//                public void onCancelled(DatabaseError databaseError) {
+//
+//                }
+//            });
+//
+//            myRef.child("user-booked-slots").child("Nazimabad").addValueEventListener(new ValueEventListener() {
+//                @Override
+//                public void onDataChange(DataSnapshot dataSnapshot) {
+//                    if (dataSnapshot.getValue() != null) {
+//                        for (DataSnapshot data : dataSnapshot.getChildren()) {
+//                            if(data.child("custName").getValue().toString().matches(mAuth.getCurrentUser().getEmail().toString())) {
+//                                Slot_ReservationModel slot_reservationModel = data.getValue(Slot_ReservationModel.class);
+//                                slot_reservationModels.add(slot_reservationModel);
+//                                view_booking_adapter.notifyDataSetChanged();
+//                            }
+//                        }
+//                    }
+//                }
+//
+//                @Override
+//                public void onCancelled(DatabaseError databaseError) {
+//
+//                }
+//            });
+//        }
+//        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
+//                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+//                builder.setTitle("Remove");
+//                builder.setMessage("You want tO Cancle Reservation..?");
+//                builder.setPositiveButton("Unbooked", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        myRef.child("user-booked-slots").child(slot_reservationModels.get(position).getPlazaName()).addListenerForSingleValueEvent(new ValueEventListener() {
+//                            @Override
+//                            public void onDataChange(DataSnapshot dataSnapshot) {
+//                                int i = 0;
+//                              for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+//                                    if (i == position) {
+//                                        DatabaseReference ref = dataSnapshot1.getRef();
+//                                        ref.removeValue();
+//                                        Toast.makeText(getActivity(), "Reservation Cancled", Toast.LENGTH_SHORT).show();
+//                                        slot_reservationModels.remove(position);
+//                                        view_booking_adapter.notifyDataSetChanged();
+//                                    }
+//                                  i++;
+//                              }
+//
+//                            }
+//
+//                            @Override
+//                            public void onCancelled(DatabaseError databaseError) {
+//
+//                            }
+//
+//                        });
+//                    }
+//                });
+//                builder.setNegativeButton("Back", null);
+//                builder.show();
+//
+//            }
+//
+//
+//
+//        });
 
         return view;
     }
