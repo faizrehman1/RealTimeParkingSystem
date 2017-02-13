@@ -53,10 +53,12 @@ public class View_booking_Adapter extends BaseAdapter {
         TextView startdate = (TextView)view.findViewById(R.id.start_time);
         TextView endtime = (TextView)view.findViewById(R.id.end_time);
         TextView totalhour = (TextView)view.findViewById(R.id.total_hour);
+        TextView cust_email = (TextView)view.findViewById(R.id.cust_email);
+
 
 
         textplazaname.setText(slot_reservationModelArrayList.get(position).getPlazaName());
-
+        cust_email.setText(slot_reservationModelArrayList.get(position).getCustName());
         slotNumber.setText(String.valueOf(slot_reservationModelArrayList.get(position).getSlot_no()));
         date.setText(slot_reservationModelArrayList.get(position).getCurrentTime());
         startdate.setText(String.valueOf(slot_reservationModelArrayList.get(position).getStarttime()));

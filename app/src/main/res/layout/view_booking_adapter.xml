@@ -1,20 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
 
-    <TextView
-        android:text="Total Hours :"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20dp"
-        android:id="@+id/slot_noo"
-        android:layout_below="@+id/plaza_name"
-        android:layout_alignLeft="@+id/plaza_name"
-        android:layout_alignStart="@+id/plaza_name" />
+        android:orientation="vertical"
+        >
 
-    <TextView
+
+        <TextView
+            android:text="Customer :"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:id="@+id/cust_name" />
+
+
+        <TextView
         android:text="Plaza Name :"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -84,57 +90,83 @@
         android:layout_below="@+id/textView5"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
+    </LinearLayout>
 
-    <TextView
-        android:text="Total Hours :"
+    <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20dp"
-        android:id="@+id/adatee"
-        android:layout_below="@+id/slot_noo"
-        android:layout_alignLeft="@+id/slot_noo"
-        android:layout_alignStart="@+id/slot_noo" />
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:text="Total Hours :"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20dp"
-        android:id="@+id/start_time"
-        android:layout_below="@+id/adatee"
-        android:layout_alignLeft="@+id/adatee"
-        android:layout_alignStart="@+id/adatee" />
+        <TextView
+            android:text="Total Hours :"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:id="@+id/cust_email"
+            />
 
-    <TextView
-        android:text="Total Hours :"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20dp"
-        android:id="@+id/total_hour"
-        android:layout_below="@+id/end_time"
-        android:layout_alignLeft="@+id/end_time"
-        android:layout_alignStart="@+id/end_time" />
+        <TextView
+            android:text="Total Hours :"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:id="@+id/plaza_name"
+            />
 
-    <TextView
-        android:text="Total Hours :"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20dp"
-        android:id="@+id/end_time"
-        android:layout_below="@+id/start_time"
-        android:layout_alignLeft="@+id/start_time"
-        android:layout_alignStart="@+id/start_time" />
 
-    <TextView
-        android:text="Total Hours :"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20dp"
-        android:id="@+id/plaza_name"
-        android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/textView"
-        android:layout_toEndOf="@+id/textView"
-        android:layout_marginLeft="36dp"
-        android:layout_marginStart="36dp" />
+        <TextView
+            android:text="Total Hours :"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:id="@+id/slot_noo"
+            android:layout_below="@+id/plaza_name"
+            android:layout_alignLeft="@+id/plaza_name"
+            android:layout_alignStart="@+id/plaza_name" />
 
-</RelativeLayout>
+
+        <TextView
+            android:text="Total Hours :"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:id="@+id/adatee"
+            android:layout_below="@+id/slot_noo"
+            android:layout_alignLeft="@+id/slot_noo"
+            android:layout_alignStart="@+id/slot_noo" />
+
+        <TextView
+            android:text="Total Hours :"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:id="@+id/start_time"
+            android:layout_below="@+id/adatee"
+            android:layout_alignLeft="@+id/adatee"
+            android:layout_alignStart="@+id/adatee" />
+
+        <TextView
+            android:text="Total Hours :"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:id="@+id/end_time"
+            android:layout_below="@+id/start_time"
+            android:layout_alignLeft="@+id/start_time"
+            android:layout_alignStart="@+id/start_time" />
+
+
+        <TextView
+            android:text="Total Hours :"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:id="@+id/total_hour"
+            android:layout_below="@+id/end_time"
+            android:layout_alignLeft="@+id/end_time"
+            android:layout_alignStart="@+id/end_time" />
+
+
+    </LinearLayout>
+
+</LinearLayout>
