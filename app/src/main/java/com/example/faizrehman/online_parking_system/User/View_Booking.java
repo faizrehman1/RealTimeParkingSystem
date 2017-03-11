@@ -215,7 +215,17 @@ public class View_Booking  extends  android.support.v4.app.Fragment{
                     }
                 });
                 builder.setNegativeButton("Back", null);
-                builder.show();
+                    builder.setNeutralButton("FeedBack", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            if(getActivity().getSupportFragmentManager().findFragmentById(R.id.container) != null) {
+                                getActivity().getSupportFragmentManager()
+                                        .beginTransaction().
+                                        remove(getActivity().getSupportFragmentManager().findFragmentById(R.id.container)).commit();
+                            }
+                        }
+                    });
+                    builder.show();
 
             }else{
                     Toast.makeText(getActivity(),"Please Select Date first !!",Toast.LENGTH_SHORT).show();
