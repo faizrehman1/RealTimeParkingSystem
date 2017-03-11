@@ -1,7 +1,6 @@
 package com.example.faizrehman.online_parking_system.User;
 
 import android.app.DatePickerDialog;
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -17,7 +16,6 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.ListView;
-import android.widget.RadioButton;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -27,7 +25,6 @@ import com.example.faizrehman.online_parking_system.Adapters.Slot_Adapter;
 import com.example.faizrehman.online_parking_system.Models.Slot_ReservationModel;
 import com.example.faizrehman.online_parking_system.R;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -37,7 +34,6 @@ import com.google.firebase.database.ValueEventListener;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.HashMap;
 import java.util.Locale;
 
 /**
@@ -107,7 +103,7 @@ public class Book_Parking extends android.support.v4.app.Fragment {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
                             slot_viewModelArrayList.clear();
-                            if (dataSnapshot.getValue() != null) {
+                            if (dataSnapshot != null) {
                                 // for (DataSnapshot data : dataSnapshot.getChildren()) {
                                 //   Slot_ReservationModel slot_reservationModel = data.getValue(Slot_ReservationModel.class);
                                 //    HashMap<String,Integer> hashMap = (HashMap)data.getValue();
@@ -138,7 +134,7 @@ public class Book_Parking extends android.support.v4.app.Fragment {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
                             slot_viewModelArrayList.clear();
-                            if (dataSnapshot.getValue() != null) {
+                            if (dataSnapshot != null) {
                                 for (int i = 0; i <= 4; i++) {
                                     if (dataSnapshot.hasChild(String.valueOf(i))) {
                                         slot_viewModelArrayList.add(new Slot_ReservationModel(i, true));
@@ -165,7 +161,7 @@ public class Book_Parking extends android.support.v4.app.Fragment {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
                             slot_viewModelArrayList.clear();
-                            if (dataSnapshot.getValue() != null) {
+                            if (dataSnapshot!= null) {
 
                                 for (int i = 0; i <= 4; i++) {
                                     if (dataSnapshot.hasChild(String.valueOf(i))) {
@@ -204,8 +200,8 @@ public class Book_Parking extends android.support.v4.app.Fragment {
                     park2.setChecked(false);
                     park3.setChecked(false);
                     slot_viewModelArrayList.clear();
+                    relativeLayout.setVisibility(View.INVISIBLE);
                 }
-
                 slot_viewModelArrayList.add(new Slot_ReservationModel(0, false));
                 slot_viewModelArrayList.add(new Slot_ReservationModel(1, false));
                 slot_viewModelArrayList.add(new Slot_ReservationModel(2, false));
@@ -213,7 +209,7 @@ public class Book_Parking extends android.support.v4.app.Fragment {
                 slot_viewModelArrayList.add(new Slot_ReservationModel(4, false));
                 slot_adapter.notifyDataSetChanged();
 
-                relativeLayout.setVisibility(View.INVISIBLE);
+            //    relativeLayout.setVisibility(View.INVISIBLE);
             }
         });
         park2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -223,6 +219,7 @@ public class Book_Parking extends android.support.v4.app.Fragment {
                     park1.setChecked(false);
                     park3.setChecked(false);
                     slot_viewModelArrayList.clear();
+                    relativeLayout.setVisibility(View.INVISIBLE);
                 }
 
                 slot_viewModelArrayList.add(new Slot_ReservationModel(0, false));
@@ -232,7 +229,7 @@ public class Book_Parking extends android.support.v4.app.Fragment {
                 slot_viewModelArrayList.add(new Slot_ReservationModel(4, false));
                 slot_adapter.notifyDataSetChanged();
 
-                relativeLayout.setVisibility(View.INVISIBLE);
+             //   relativeLayout.setVisibility(View.INVISIBLE);
             }
         });
         park3.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -242,6 +239,7 @@ public class Book_Parking extends android.support.v4.app.Fragment {
                     park1.setChecked(false);
                     park2.setChecked(false);
                     slot_viewModelArrayList.clear();
+                    relativeLayout.setVisibility(View.INVISIBLE);
                 }
 
                 slot_viewModelArrayList.add(new Slot_ReservationModel(0, false));
@@ -251,7 +249,7 @@ public class Book_Parking extends android.support.v4.app.Fragment {
                 slot_viewModelArrayList.add(new Slot_ReservationModel(4, false));
                 slot_adapter.notifyDataSetChanged();
 
-                relativeLayout.setVisibility(View.INVISIBLE);
+             //   relativeLayout.setVisibility(View.INVISIBLE);
             }
         });
 
